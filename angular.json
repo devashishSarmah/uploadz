@@ -1,7 +1,42 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "161b7854-cebf-4089-b2e4-ca103ef0ea5b"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "uploadz": {
+      "projectType": "library",
+      "root": "projects/uploadz",
+      "sourceRoot": "projects/uploadz/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/uploadz/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/uploadz/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/uploadz/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/uploadz/src/test.ts",
+            "tsConfig": "projects/uploadz/tsconfig.spec.json",
+            "karmaConfig": "projects/uploadz/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "uploadz"
 }
