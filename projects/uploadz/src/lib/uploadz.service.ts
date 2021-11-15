@@ -6,7 +6,7 @@ import {
   HttpEventType,
   HttpProgressEvent,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UploadRequest, Progress } from '../utils/models/upload.model';
 
@@ -15,6 +15,16 @@ import { UploadRequest, Progress } from '../utils/models/upload.model';
 })
 export class UploadzService {
   constructor(private http: HttpClient) {}
+
+  uploadFiles(files: File[], url: string): Observable<any>[] {
+    const observables: Observable<any>[] = [];
+
+    files.map((file: File) =>
+      observables.push(this.upload({ file: file, url: url }))
+    );
+
+    return observables;
+  }
 
   upload(uploadRequest: UploadRequest): Observable<any> {
     const formdata = new FormData();
