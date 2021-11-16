@@ -59,7 +59,11 @@ export class UploadzService {
       case HttpEventType.Response:
         return new HttpResponse<any>({
           status: 200,
-          body: { type: 'done', message: 'File has been uploaded!' },
+          body: {
+            type: 'done',
+            message: 'File has been uploaded!',
+            response: <HttpResponse<any>>event.body,
+          },
         });
         break;
       case HttpEventType.UploadProgress:
