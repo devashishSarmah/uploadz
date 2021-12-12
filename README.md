@@ -1,27 +1,65 @@
 # Uploadz
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
+Angular NPM Package to upload files using multiple observer design patterns.
 
-## Development server
+## Table of contents
+* [How to use](#howtouse)
+* [Models](#models)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+<h2 id="howtouse">How to use</h2>
 
-## Code scaffolding
+Install the package
+```
+npm i uploadz
+```
+Inject the `UploadzService` Injectable
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```import { UploadzService } from 'uploadz';```
 
-## Build
+```contructure(uploadzService: UploadzService) {}```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Using the `uploadFiles` method specifying `files to upload` and the `endpoint` 
 
-## Running unit tests
+Method Signature `uploadFiles(files: File[], url: string): Observable<any>[];`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+For each `UploadRequest`, A prettified Response Gets returned
 
-## Running end-to-end tests
+`'Request has been made!'`
+`Response header has been received!`
+`File has been uploaded!`
+<br>
+For each event type : `progress`
+<br>
+ Response of type Progress gets returned
+ ```
+ {
+        percentage: 0,
+        uploaded: 0,
+        totalSize: 0,
+        estimateTime: '0 Seconds',
+  }
+ ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+<h2 id="models">Models</h2>
 
-## Further help
+`UploadRequest` Model
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+type UploadRequest = {
+  url: string;
+  file: File;
+};
+```
+
+`Progress` Model
+
+```
+type Progress = {
+  percentage: number;
+  uploaded: number;
+  totalSize: number;
+  estimateTime: string;
+};
+```
+
+
