@@ -1,11 +1,33 @@
 {
   "name": "uploadz",
-  "version": "0.0.3",
+  "version": "0.0.4",
+  "description": "Angular NPM Package to upload files using multiple observer design patterns",
+  "bugs": "https://github.com/devashishSarmah/uploadz/issues",
+  "readmeFilename": "README.md",
   "peerDependencies": {
     "@angular/common": "^12.1.0",
     "@angular/core": "^12.1.0"
   },
   "dependencies": {
     "tslib": "^2.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devashishSarmah/uploadz"
+  },
+  "keywords": [
+    "file-upload",
+    "drag & drop",
+    "drag and drop",
+    "file upload",
+    "forms",
+    "angular",
+    "ng-rxjs",
+    "rxjs 6",
+    "angular form",
+    "JavaScript",
+    "TypeScript"
+  ],
+  "author": "Devashish Sarmah",
+  "license": "MIT"
 }
