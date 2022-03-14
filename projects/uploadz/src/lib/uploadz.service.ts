@@ -15,7 +15,7 @@ import { UploadRequest, Progress } from '../utils/models/upload.model';
 })
 export class UploadzService {
 
-  specialHeaders?: any[];
+  specialHeaders?: any;
 
   constructor(private http: HttpClient) {}
 
