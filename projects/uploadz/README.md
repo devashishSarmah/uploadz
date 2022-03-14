@@ -1,24 +1,65 @@
 # Uploadz
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
+Angular NPM Package to upload files using multiple observer design patterns.
 
-## Code scaffolding
+## Table of contents
+* [How to use](#howtouse)
+* [Models](#models)
 
-Run `ng generate component component-name --project uploadz` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project uploadz`.
-> Note: Don't forget to add `--project uploadz` or else it will be added to the default project in your `angular.json` file. 
+<h2 id="howtouse">How to use</h2>
 
-## Build
+Install the package
+```
+npm i uploadz
+```
+Inject the `UploadzService` Injectable
 
-Run `ng build uploadz` to build the project. The build artifacts will be stored in the `dist/` directory.
+```import { UploadzService } from 'uploadz';```
 
-## Publishing
+```contructure(uploadzService: UploadzService) {}```
 
-After building your library with `ng build uploadz`, go to the dist folder `cd dist/uploadz` and run `npm publish`.
+Using the `uploadFiles` method specifying `files to upload` and the `endpoint` 
 
-## Running unit tests
+Method Signature `uploadFiles(files: File[], url: string): Observable<any>[];`
 
-Run `ng test uploadz` to execute the unit tests via [Karma](https://karma-runner.github.io).
+For each `UploadRequest`, A prettified Response Gets returned
 
-## Further help
+`'Request has been made!'`
+`Response header has been received!`
+`File has been uploaded!`
+<br>
+For each event type : `progress`
+<br>
+ Response of type Progress gets returned
+ ```
+ {
+        percentage: 0,
+        uploaded: 0,
+        totalSize: 0,
+        estimateTime: '0 Seconds',
+  }
+ ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<h2 id="models">Models</h2>
+
+`UploadRequest` Model
+
+```
+type UploadRequest = {
+  url: string;
+  file: File;
+};
+```
+
+`Progress` Model
+
+```
+type Progress = {
+  percentage: number;
+  uploaded: number;
+  totalSize: number;
+  estimateTime: string;
+};
+```
+
+

@@ -1,6 +1,6 @@
 {
   "name": "uploadz",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Angular NPM Package to upload files using multiple observer design patterns",
   "bugs": "https://github.com/devashishSarmah/uploadz/issues",
   "readmeFilename": "README.md",
