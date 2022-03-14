@@ -14,6 +14,9 @@ import { UploadRequest, Progress } from '../utils/models/upload.model';
   providedIn: 'root',
 })
 export class UploadzService {
+
+  specialHeaders?: any[];
+
   constructor(private http: HttpClient) {}
 
   uploadFiles(files: File[], url: string): Observable<any>[] {
@@ -31,10 +34,17 @@ export class UploadzService {
     const timeRigthNow = new Date().getTime();
     formdata.append('file', uploadRequest.file);
 
+    let headers = {};
+
+    if (this.specialHeaders) {
+      headers = { ...this.specialHeaders };
+    }
+
     return this.http
       .post(uploadRequest.url, formdata, {
         reportProgress: true,
         observe: 'events',
+        headers: headers
       })
       .pipe(map((event) => this.prettifyProgressResponse(event, timeRigthNow)));
   }
